@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  ros2_humble:
+    build: .
+    container_name: ros2_humble_container
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=${XAUTHORITY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+    network_mode: "host"
+    privileged: true
+    stdin_open: true
+    tty: true
+    command: /bin/bash
